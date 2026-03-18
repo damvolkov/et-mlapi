@@ -1,28 +1,17 @@
 services:
-  robyn-ml-api:
+  et-mlapi:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - ENABLE_DEBUG=true
-    container_name: robyn-ml-api
+    container_name: et-mlapi
+    hostname: et-mlapi
     restart: unless-stopped
     ports:
-      - "8000:8000"
-      - "5678:5678"  # debugpy port
+      - "${PORT:-8012}:8012"
     volumes:
-      - ./app:/app/app
-    environment:
-      - ENVIRONMENT=DEV
-      - DEBUG=True
-      - ENABLE_DEBUG=true
-      - API_HOST=0.0.0.0
-      - API_PORT=8000
-    env_file:
-      - path: .env
-        required: false
+      - ./data/config:/app/data/config
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8012/health"]
       interval: 30s
       timeout: 10s
       retries: 3
