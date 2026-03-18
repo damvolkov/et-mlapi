@@ -98,7 +98,7 @@ dev:
 
 prod:
 	@echo "$(CYAN)=== Production mode ===$(RESET)"
-	@ENVIRONMENT=PROD DEBUG=False uv run python -m et_mlapi.main
+	@uv run python -m et_mlapi.main
 
 
 # Docker
