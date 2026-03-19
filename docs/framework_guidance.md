@@ -288,24 +288,11 @@ The Dockerfile uses a multi-stage build with `uv` for fast, reproducible install
 
 GitHub Actions runs on every push/PR to `main`:
 
-| Job | Description | Condition |
-|---|---|---|
-| **Lint** | `ruff check` + `ruff format --check` | Always |
-| **Type Check** | `ty check` (Astral Rust type checker) | Always |
-| **Unit Tests** | `pytest tests/unit -n auto --cov` | Always |
-| **Integration Tests** | `pytest tests/integration -m slow` | Always |
-| **Docker Build** | Build image (no push by default) | `DOCKER_PUBLISH == 'true'` |
-
-### Enabling Docker builds in CI
-
-The Docker build job is **disabled by default**.  To enable it:
-
-1. Go to **GitHub → Settings → Secrets and variables → Actions → Variables**
-2. Create a new **repository variable**: `DOCKER_PUBLISH` = `true`
-
-This is a GitHub Actions **repository variable** (not a secret), configured via `vars.DOCKER_PUBLISH` in the workflow.  When set to `true`, the Docker job runs after lint + typecheck + unit tests pass.
-
-To push images to GHCR, extend the Docker job with `docker/login-action` and set `push: true`.
+- **Lint** — `ruff check` + `ruff format --check`
+- **Type Check** — `ty check`
+- **Unit Tests** — `pytest tests/unit` with coverage
+- **Integration Tests** — `pytest tests/integration -m slow`
+- **Docker Build** — conditional on `DOCKER_PUBLISH` repository variable
 
 ---
 
