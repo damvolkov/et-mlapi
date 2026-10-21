@@ -1,8 +1,8 @@
-<p align="center">
-  <img src="assets/logo.svg" alt="et-mlapi" width="220">
-</p>
-
 <h1 align="center">et-mlapi</h1>
+
+<p align="center">
+  <img src="assets/logo.svg" alt="et-mlapi" height="110" />
+</p>
 
 <p align="center">
   <strong>Production-ready ML API template</strong> — Robyn + Pydantic + WebSockets + SSE + Streaming
