@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/eager.png" alt="et-mlapi" width="200">
+  <img src="assets/logo.svg" alt="et-mlapi" width="220">
 </p>
 
 <h1 align="center">et-mlapi</h1>
